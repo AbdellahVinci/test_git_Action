@@ -41,4 +41,13 @@ function validateGamerTag(gamerTag) {
     return 'Valid - gamertag is acceptable';
 }
 
+function validateUpperCase(gamerTag) {
+    if (!/[A-Z]/.test(gamerTag)) {
+        console.log('Failed upper case check');
+        return 'Invalid - gamertag must contain at least one uppercase letter';
+    }
+    return null;
+}
+
+
 module.exports = validateGamerTag;
