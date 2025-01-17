@@ -50,4 +50,5 @@ function validateUpperCase(gamerTag) {
 }
 
 
+
 module.exports = validateGamerTag;
