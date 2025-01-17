@@ -1,55 +1,41 @@
-const e = require("express");
-
-function validateLength(gamerTag) {
-    if (gamerTag.length < 8) {
-        console.log('Failed length check');
-        return 'Invalid - gamertag length must be at least 8 characters';
+export class Main {
+   
+    validateLength(gamertag) {
+        if (gamertag.length >= 8) {
+            return true;  
+        } else {
+            return false; 
+        }
     }
-    return null;
-}
 
-function validateSpecialCharacter(gamerTag) {
-    const specialCharacters = ['&', '$', '!', 'è', '§', 'à', '_'];
-    if (!specialCharacters.some(char => gamerTag.includes(char))) {
-        console.log('Failed special character check');
-        return 'Invalid - gamertag must contain at least a special character';
+    
+    validateSpecialCharacter(gamertag) {
+        const specialCharacters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', ',', '.', '?', ':', '"', '{', '}', '|', '<', '>', '/'];
+        for (let i = 0; i < gamertag.length; i++) {
+            if (specialCharacters.includes(gamertag[i])) {
+                return true; 
+            }
+        }
+        return false;  
     }
-    return null;
-}
 
-function validateNumber(gamerTag) {
-    if (!/\d/.test(gamerTag)) {
-        console.log('Failed number check');
-        return 'Invalid - gamertag must contain at least a number';
+   
+    validateNumber(gamertag) {
+        for (let i = 0; i < gamertag.length; i++) {
+            if (gamertag[i] >= '0' && gamertag[i] <= '9') {
+                return true;  
+            }
+        }
+        return false;
     }
-    return null;
-}
 
-function validateUpperCase(gamerTag) {
-    if (!/[A-Z]/.test(gamerTag)) {
-        console.log('Failed upper case check');
-        return 'Invalid - gamertag must contain at least one uppercase letter';
+    // Vérifie si le gamertag contient une lettre majuscule
+    validateUpperCase(gamertag) {
+        for (let i = 0; i < gamertag.length; i++) {
+            if (gamertag[i] === gamertag[i].toUpperCase() && gamertag[i] !== gamertag[i].toLowerCase()) {
+                return true;  // Lettre majuscule trouvée
+            }
+        }
+        return false;  // Aucune lettre majuscule trouvée
     }
-    return null;
 }
-
-function validateGamerTag(gamerTag) {
-    console.log('GamerTag:', gamerTag);
-
-    let result = validateLength(gamerTag);
-    if (result) return result;
-
-    result = validateSpecialCharacter(gamerTag);
-    if (result) return result;
-
-    result = validateNumber(gamerTag);
-    if (result) return result;
-
-    result = validateUpperCase(gamerTag);  // Ajout de la validation pour la majuscule
-    if (result) return result;
-
-    console.log('Passed all checks');
-    return 'Valid - gamertag is acceptable';
-}
-
-module.exports = validateGamerTag;
