@@ -16,22 +16,13 @@ describe('Gamer Tag Validation', () => {
         expect(result).toBe('Invalid - gamertag must contain at least a number');
     });
 
+    it('should invalidate a gamertag without an uppercase letter', () => {
+        const result = validateGamerTag('lowercase1!');
+        expect(result).toBe('Invalid - gamertag must contain at least one uppercase letter');
+    });
+
     it('should validate a correct gamertag', () => {
         const result = validateGamerTag('Valid123!');
         expect(result).toBe('Valid - gamertag is acceptable');
     });
-    const validateUpperCase = require('../validateGamerTag');
-
-describe('validateUpperCase', () => {
-    it('should return an error if no uppercase letter is found', () => {
-        const result = validateUpperCase('gamer_tag');
-        expect(result).toBe('Invalid - gamertag must contain at least one uppercase letter');
-    });
-
-    it('should return null if an uppercase letter is found', () => {
-        const result = validateUpperCase('Gamer_Tag');
-        expect(result).toBeNull();
-    });
-});
-
 });
