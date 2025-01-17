@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon app.js",
-    "build": "echo 'No build step defined'",
-    "test": "jasmine"
+     "test": "jasmine",
+    "build": "echo 'No build step defined'"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
