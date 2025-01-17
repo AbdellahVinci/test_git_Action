@@ -7,6 +7,7 @@ env:
   AZURE_WEBAPP_NAME: your-app-name    # Remplacez par le nom de votre application Azure
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # Remplacez par le chemin vers votre projet Node.js si nécessaire
   NODE_VERSION: '20.x'                # Définissez la version de Node.js que vous souhaitez utiliser
+  JASMINE_CONFIG_PATH: 'Spec/Support/jasmine.json'  # Spécifie le chemin du fichier de config Jasmine
 
 permissions:
   contents: read
@@ -60,5 +61,3 @@ jobs:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-
-
