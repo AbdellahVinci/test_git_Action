@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon app.js",
     "build": "echo 'No build step defined'",
-    "test": "jasmine --config=spec/Support/jasmine.mjs"
+    "test": "jasmine"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
